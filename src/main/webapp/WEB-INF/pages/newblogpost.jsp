@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Welcome</title>
+<title>New Blog Post</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/starter-template.css">
@@ -24,21 +27,25 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h1>Java Spring MVC(JavaConfig)</h1>
-		<p>Welcome to Java Spring Configuration</p>
-		<p>The sample application provided by Spring MVC javaConfig udemy course</p>
+		<h1>new Blog Post Page</h1>
 		
-		<a href="${pageContext.request.contextPath}/displayUsers">Display users with Embedded Database</a>
+		<c:if test="${not empty message}">
+			  ${message}<br/>
+		</c:if>
 		
-		<br/>
-        
-        <a href="${pageContext.request.contextPath}/displayUsersMySQL">Display users with MySQL Database</a>			
-	
-	  <br/>	
-	
-	    <a href="${pageContext.request.contextPath}/newblogpost.html">New Blog Post</a>
-	
-	         
+		
+		<form action="${pageContext.request.contextPath}/saveBlogPost" method="post">
+		<table style="width: 650px" class="table-striped">
+		<tr><td>Title</td><td><input type="text" name="title" required autofocus/></td></tr>
+		<tr><td>Content</td><td>
+		<textarea style="width: 400px" name="content" rows="10" maxlength="4000" required></textarea>
+		</td></tr>
+		<tr><td>Draft</td><td><input type="checkbox" name="draft"/></td></tr>
+		<tr><td colspan="2"><input type="submit" value="save"></td></tr>
+		</table>
+		</form>
+		
+           <a href="${pageContext.request.contextPath}">Back</a>			
 	</div>
 
 	<footer class="footer">
