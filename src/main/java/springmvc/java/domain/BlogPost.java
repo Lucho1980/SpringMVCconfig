@@ -26,7 +26,7 @@ public class BlogPost {
 	@Column(name = "content", nullable = false)
 	private String content;
 
-	@Column(name = "publishDate", nullable = false)
+	@Column(name = "publishDate", nullable = true)
 	private Date publishDate;
 
 	@Column(name = "draft", nullable = false)

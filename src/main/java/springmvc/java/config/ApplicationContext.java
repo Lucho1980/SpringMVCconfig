@@ -63,8 +63,8 @@ public class ApplicationContext {
 		return embeddedDatabase;
 	}
 	
-	@Bean
-	public JpaTransactionManager jpaTransactionManager(EntityManagerFactory  entityManagerFactory){
+	@Bean                        //Era JpaTransactionManager
+	public JpaTransactionManager transactionManager(EntityManagerFactory  entityManagerFactory){
 		
 		JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();		
 		jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);		

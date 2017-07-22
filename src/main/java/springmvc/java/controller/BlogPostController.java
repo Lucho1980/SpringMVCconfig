@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import springmvc.java.domain.BlogPost;
 import springmvc.java.service.BlogPostService;
+import springmvc.java.service.UserService;
 
 @Controller
 public class BlogPostController {
@@ -18,6 +19,9 @@ public class BlogPostController {
 
 	@Autowired
 	private BlogPostService blogPostService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/saveBlogPost", method = RequestMethod.POST)
 	public ModelAndView saveBlogPost(
@@ -29,6 +33,8 @@ public class BlogPostController {
 
 		blogPost.setTitle(title);
 		blogPost.setContent(content);
+		
+		blogPost.setUser(userService.findUserById(1L));
 
 		if (draft == true) {
 			blogPostService.saveAsDraft(blogPost);
