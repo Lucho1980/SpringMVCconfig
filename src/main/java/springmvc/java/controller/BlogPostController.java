@@ -1,5 +1,6 @@
 package springmvc.java.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,14 +40,17 @@ public class BlogPostController {
 	public ModelAndView saveBlogPost(
 			@RequestParam(value = "title") String title,
 			@RequestParam(value = "content") String content,
-			@RequestParam(value = "draft", required = false) boolean draft, Locale locale) {
+			@RequestParam(value = "draft", required = false) boolean draft, Locale locale
+			,Principal principal) {
 
 		BlogPost blogPost = new BlogPost();
 
 		blogPost.setTitle(title);
 		blogPost.setContent(content);
 		
-		blogPost.setUser(userService.findUserWithBlogPostByUsername("user"));
+		//blogPost.setUser(userService.findUserWithBlogPostByUsername("user"));
+		//Lo cambio para user Principal principal
+		blogPost.setUser(userService.findUserWithBlogPostByUsername(principal.getName()));
 
 		if (draft == true) {
 			blogPostService.saveAsDraft(blogPost);
@@ -60,25 +64,25 @@ public class BlogPostController {
 	}
 	
 	@RequestMapping(value="/blogposts", method = RequestMethod.GET)
-	public ModelAndView blogPosts(){
+	public ModelAndView blogPosts(Principal principal){
 		
-		User user = userService.findUserWithBlogPostByUsername("user");
+		User user = userService.findUserWithBlogPostByUsername(principal.getName());
 		List<BlogPost> blogPosts = user.getBlogPost();
 		return new ModelAndView("blogposts", "blogposts",blogPosts);
 	}
 	
 	@RequestMapping(value="/draftblogposts", method = RequestMethod.GET)
-	public ModelAndView draftBlogPosts(){
+	public ModelAndView draftBlogPosts(Principal principal){
 		
-		User user = userService.findUserWithBlogPostByUsername("user");
+		User user = userService.findUserWithBlogPostByUsername(principal.getName());
 		List<BlogPost> draftBlogPosts = blogPostService.listAllBlogPostsByUserAndDraftStatus(user, true);
 		return new ModelAndView("blogposts", "blogposts",draftBlogPosts);
 	}
 	
 	@RequestMapping(value="/searchByTitle", method = RequestMethod.POST)
-	public ModelAndView searchByTitle(@RequestParam(value="title")String title){
+	public ModelAndView searchByTitle(@RequestParam(value="title")String title,Principal principal){
 		
-		User user = userService.findUserWithBlogPostByUsername("user");
+		User user = userService.findUserWithBlogPostByUsername(principal.getName());
 		List<BlogPost> blogPosts = blogPostService.listAllBlogPostsByUserAndTitleLike(user, title);
 		return new ModelAndView("blogposts", "blogposts",blogPosts);
 	}

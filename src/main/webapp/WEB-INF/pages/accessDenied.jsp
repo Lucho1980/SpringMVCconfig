@@ -2,15 +2,12 @@
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Welcome</title>
+<title>Access is Denied</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/starter-template.css">
@@ -30,44 +27,10 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h1>Java Spring MVC(JavaConfig)</h1>
-		<p>Welcome to Java Spring Configuration</p>
-		<p>The sample application provided by Spring MVC javaConfig udemy course</p>
-		
-		<a href="${pageContext.request.contextPath}/displayUsers">Display users with Embedded Database</a>
-		
-		<br/>
-        
-        <a href="${pageContext.request.contextPath}/displayUsersMySQL">Display users with MySQL Database</a>			
+		<h1>Access is Denied</h1>
 	
-	  <br/>	
-	
-	    <a href="${pageContext.request.contextPath}/newblogpost.html">New Blog Post</a>
-	
-	   <br/>	
-	
-	    <a href="${pageContext.request.contextPath}/blogposts">Blog Posts</a>
-	   
-	   <br/>
-	   
-	   <a href="${pageContext.request.contextPath}/admin.html">Admin</a>
-	   
-	   <br/>
-	   
-	   <br/>
-	   
-	   <!-- con esto puedo decidir si puede o no ver el contenido algun usuario o rol-->
-	   <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-	   <b>You are logged in as: </b><security:authentication property="principal.username"/>
-	   with the role of: <security:authentication property="principal.authorities"/>
-	   <br/>
-	   <a href="<c:url value="/logout"/>">Logout</a>
-	   </security:authorize>
-	        
-	        
+	         
 	</div>
-	
-	
 
 	<footer class="footer">
 		<div class="container">
