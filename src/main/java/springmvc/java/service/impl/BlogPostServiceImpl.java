@@ -36,6 +36,7 @@ public class BlogPostServiceImpl implements BlogPostService {
 		blogPostDAO.save(blogPost);//Metodo propio save
 		
 		//emailService.sendEmail(); Elimina las formas antiguas poesto que hibernate tiene metodos propios.
+			
 	}
 
 	@Override
@@ -54,14 +55,14 @@ public class BlogPostServiceImpl implements BlogPostService {
 
 	@Override
 	public List<BlogPost> listAllBlogPostsByUserAndDraftStatus(User user, boolean draft) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return blogPostDAO.findAllBlogPostsByUserAndDraft(user, draft);
 	}
 
 	@Override
 	public List<BlogPost> listAllBlogPostsByUserAndTitleLike(User user, String title) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return blogPostDAO.findAllBlogPostsByUserAndTitleContaining(user, title);
 	}
 
 	@Override

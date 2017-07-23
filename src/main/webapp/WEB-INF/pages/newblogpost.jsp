@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +30,10 @@
 		<h1>new Blog Post Page</h1>
 		
 		<c:if test="${not empty message}">
-			  ${message}<br/>
+			  ${message}<br/>		
+	
+	   		  <a href="${pageContext.request.contextPath}/blogposts">Blog Posts</a>
+	    
 		</c:if>
 		
 		
@@ -51,11 +54,14 @@
 	<footer class="footer">
 		<div class="container">
 			<p class="text-muted">
-				<b>Tuna Tore 2016 Please feel free to ask questions by sending
-					email to tunatore@gmail.com</b>
+				<b>Tuna Tore 2016 Please feel free to ask questions by sending email to tunatore@gmail.com</b>
 			</p>
-			<a href="<%=request.getContextPath()%>?language=en">EN</a> <a
-				href="<%=request.getContextPath()%>?language=de">DE</a>
+			<a href="<%=request.getContextPath()%>?language=en">EN</a> 
+			<a href="<%=request.getContextPath()%>?language=de">DE</a>
+			
+			<spring:message code="language"/>
+			
+			<font color="green"><b><spring:message code="welcome.text"/></b></font>
 		</div>
 	</footer>
 </body>
