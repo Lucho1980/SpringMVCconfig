@@ -1,7 +1,6 @@
 package springmvc.java.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -15,9 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages={"springmvc.java"})
 @Import(value=SecurityConfig.class)
-
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
