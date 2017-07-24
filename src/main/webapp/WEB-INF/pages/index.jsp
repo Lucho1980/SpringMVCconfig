@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 
 
 <html>
@@ -34,37 +33,7 @@
 		<p>Welcome to Java Spring Configuration</p>
 		<p>The sample application provided by Spring MVC javaConfig udemy course</p>
 		
-		<a href="${pageContext.request.contextPath}/displayUsers">Display users with Embedded Database</a>
-		
-		<br/>
-        
-        <a href="${pageContext.request.contextPath}/displayUsersMySQL">Display users with MySQL Database</a>			
-	
-	  <br/>	
-	
-	    <a href="${pageContext.request.contextPath}/newblogpost.html">New Blog Post</a>
-	
-	   <br/>	
-	
-	    <a href="${pageContext.request.contextPath}/blogposts">Blog Posts</a>
-	   
-	   <br/>
-	   
-	   <a href="${pageContext.request.contextPath}/admin.html">Admin</a>
-	   
-	   <br/>
-	   
-	   <br/>
-	   
-	   <!-- con esto puedo decidir si puede o no ver el contenido algun usuario o rol-->
-	   <security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-	   <b>You are logged in as: </b><security:authentication property="principal.username"/>
-	   with the role of: <security:authentication property="principal.authorities"/>
-	   <br/>
-	   <a href="<c:url value="/logout"/>">Logout</a>
-	   </security:authorize>
-	        
-	        
+		springmvc-java-config-webxml
 	</div>
 	
 	
@@ -77,9 +46,7 @@
 			<a href="<%=request.getContextPath()%>?language=en">EN</a> 
 			<a href="<%=request.getContextPath()%>?language=de">DE</a>
 			
-			<spring:message code="language"/>
 			
-			<font color="green"><b><spring:message code="welcome.text"/></b></font>
 		</div>
 	</footer>
 </body>
