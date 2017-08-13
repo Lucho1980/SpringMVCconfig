@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 
 <configuration scan="true" scanPeriod="30 seconds">
-	<property name="LOG_HOME" value="c:/springmvc-java-config/logs" />
+	<property name="LOG_HOME" value="c:/Basic-Login/logs" />
 
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
